@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<title>label isTrusted test</title>
+	</head>
+	<body>
+		<div>
+			<label>
+				<input type="checkbox" id="checkbox" />
+				Click me
+			</label>
+		</div>
+		<div>
+			<button id="button-label">dispatch on label</button>
+			<button id="button-checkbox">dispatch on checkbox</button>
+		</div>
+		<p id="output-label"></p>
+		<p id="output-checkbox"></p>
+		<script>
+			document
+				.querySelector("label")
+				.addEventListener("click", function (event) {
+					document.getElementById("output-label").textContent =
+						"label isTrusted: " + event.isTrusted;
+				});
+			document
+				.getElementById("checkbox")
+				.addEventListener("click", function (event) {
+					document.getElementById("output-checkbox").textContent =
+						"checkbox isTrusted: " + event.isTrusted;
+				});
+
+			document
+				.getElementById("button-label")
+				.addEventListener("click", function () {
+					document.querySelector("label").click();
+				});
+			document
+				.getElementById("button-checkbox")
+				.addEventListener("click", function () {
+					document.getElementById("checkbox").click();
+				});
+		</script>
+	</body>
+</html>
